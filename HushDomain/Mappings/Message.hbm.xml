@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="HushDomain"
+                   namespace="HushDomain.Entities">
+
+  <class name="Message" table="test.messages">
+    <id name="Id" column="message_id">
+      <generator class="native" />
+    </id>
+    <property name="Text" column="message_text"/>
+  </class>
+
+</hibernate-mapping>
