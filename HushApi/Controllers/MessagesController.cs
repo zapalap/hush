@@ -31,5 +31,12 @@ namespace HushApi.Controllers
             return Repository.GetById(id);
         }
 
+        [HttpPost]
+        public Message Post(Message message)
+        {
+            Repository.Add(message);
+            return message;
+        }
+
     }
 }
