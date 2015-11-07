@@ -11,5 +11,6 @@ namespace HushDomain.Repositories.Abstract
         Message GetById(long Id);
         void Add(Message message);
         IEnumerable<Message> GetAll();
+        IEnumerable<Message> GetWithinOf(double distanceMeters, GeoPoint origin);
     }
 }

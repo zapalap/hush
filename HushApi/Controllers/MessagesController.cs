@@ -25,18 +25,20 @@ namespace HushApi.Controllers
             return Repository.GetAll();
         }
 
-        // GET api/values/5
         public Message Get(long id)
         {
             return Repository.GetById(id);
         }
 
-        [HttpPost]
         public Message Post(Message message)
         {
             Repository.Add(message);
             return message;
         }
-
+        
+        public IEnumerable<Message> Post(double distance, [FromBody]GeoPoint origin)
+        {
+            return Repository.GetWithinOf(distance, origin);
+        }
     }
 }

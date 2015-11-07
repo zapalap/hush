@@ -26,6 +26,10 @@ namespace HushDomain.Repositories.Concrete
             return GetSession().BeginTransaction();
         }
 
+        /// <summary>
+        /// Adds new message to database
+        /// </summary>
+        /// <param name="message"></param>
         public void Add(Message message)
         {
             using (var session = GetSession())
@@ -38,6 +42,10 @@ namespace HushDomain.Repositories.Concrete
             }
         }
 
+        /// <summary>
+        /// Gets all messages
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Message> GetAll()
         {
             var session = GetSession();
@@ -47,9 +55,37 @@ namespace HushDomain.Repositories.Concrete
             }
         }
 
+        /// <summary>
+        /// Gets specific message by id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public Message GetById(long Id)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Queries database for all messages left within distanceMeters from origin
+        /// </summary>
+        /// <param name="distanceMeters"></param>
+        /// <param name="origin"></param>
+        /// <returns></returns>
+        public IEnumerable<Message> GetWithinOf(double distanceMeters, GeoPoint origin)
+        {
+            var query = String.Format(
+                "SELECT * FROM messages WHERE ST_DWithin(geography(geom), geography(ST_SetSRID(ST_Point({0}, {1}), 4326)), {2})", 
+                origin.Longitude, 
+                origin.Latitude, 
+                distanceMeters);
+
+            var session = GetSession();
+            using (session)
+            {
+                return session
+                    .CreateSQLQuery(query)
+                    .AddEntity(typeof(Message)).List<Message>();
+            }
         }
     }
 }
