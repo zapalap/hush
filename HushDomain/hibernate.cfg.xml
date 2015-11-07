@@ -3,7 +3,7 @@
   <session-factory name="NHTest">
     <property name="connection.driver_class">NHibernate.Driver.NpgsqlDriver</property>
     <property name="connection.connection_string">
-      Server=localhost;Database=test;User ID=postgres;Password=postgres;
+      Server=localhost;Database=hushgis;User ID=postgres;Password=postgres;
     </property>
     <property name="show_sql">true</property>
     <property name="dialect">NHibernate.Dialect.PostgreSQL82Dialect</property>

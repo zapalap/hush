@@ -3,11 +3,13 @@
                    assembly="HushDomain"
                    namespace="HushDomain.Entities">
 
-  <class name="Message" table="test.messages">
-    <id name="Id" column="message_id">
+  <class name="Message" table="messages">
+    <id name="Id" column="id">
       <generator class="native" />
     </id>
-    <property name="Text" column="message_text"/>
+    <property name="Text" column="text"/>
+    <property name="Longitude" column="long"/>
+    <property name="Latitude" column="lat"/>
   </class>
 
 </hibernate-mapping>

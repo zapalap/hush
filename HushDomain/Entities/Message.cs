@@ -9,5 +9,7 @@ namespace HushDomain.Entities
     {
         public virtual long Id { get; set; }
         public virtual string Text { get; set; }
+        public virtual double Longitude { get; set; }
+        public virtual double Latitude { get; set; }
     }
 }
