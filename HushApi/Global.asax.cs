@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using HushApi.Infrastructure.Diagnostics;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace HushApi
                 .JsonFormatter
                 .SerializerSettings
                 .ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new HttpRequestLoggingHandler());
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

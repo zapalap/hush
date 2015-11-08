@@ -10,6 +10,11 @@ namespace HushApi
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            var traceWriter = config.EnableSystemDiagnosticsTracing();
+            traceWriter.IsVerbose = true;
+            traceWriter.MinimumLevel = System.Web.Http.Tracing.TraceLevel.Debug;
+
+            config.EnableCors();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -19,6 +24,8 @@ namespace HushApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            
         }
     }
 }
