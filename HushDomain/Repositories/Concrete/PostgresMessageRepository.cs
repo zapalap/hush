@@ -32,6 +32,8 @@ namespace HushDomain.Repositories.Concrete
         /// <param name="message"></param>
         public void Add(Message message)
         {
+            message.DateCreated = DateTime.UtcNow;
+
             using (var session = GetSession())
             {
                 using (var transaction = session.BeginTransaction())

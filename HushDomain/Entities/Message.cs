@@ -11,5 +11,6 @@ namespace HushDomain.Entities
         public virtual string Text { get; set; }
         public virtual double Longitude { get; set; }
         public virtual double Latitude { get; set; }
+        public virtual DateTime DateCreated { get; set; }
     }
 }

@@ -10,6 +10,7 @@
     <property name="Text" column="text"/>
     <property name="Longitude" column="long"/>
     <property name="Latitude" column="lat"/>
+    <property name="DateCreated" column="created"/>
   </class>
 
 </hibernate-mapping>
